@@ -1,4 +1,124 @@
 ---
+# Source: istio/charts/galley/templates/poddisruptionbudget.yaml
+
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: istio-galley
+  namespace: istio-system
+  labels:
+    app: galley
+    chart: galley
+    heritage: Tiller
+    release: istio
+    istio: galley
+spec:
+
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: galley
+      release: istio
+      istio: galley
+
+---
+# Source: istio/charts/gateways/templates/poddisruptionbudget.yaml
+
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: istio-ingressgateway
+  namespace: istio-system
+  labels:
+    chart: gateways
+    heritage: Tiller
+    release: istio
+    app: istio-ingressgateway
+    istio: ingressgateway
+spec:
+
+  minAvailable: 1
+  selector:
+    matchLabels:
+      release: istio
+      app: istio-ingressgateway
+      istio: ingressgateway
+---
+
+---
+# Source: istio/charts/mixer/templates/poddisruptionbudget.yaml
+
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: istio-policy
+  namespace: istio-system
+  labels:
+    app: policy
+    chart: mixer
+    heritage: Tiller
+    release: istio
+    version: 1.1.0
+    istio: mixer
+    istio-mixer-type: policy
+spec:
+
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: policy
+      release: istio
+      istio: mixer
+      istio-mixer-type: policy
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: istio-telemetry
+  namespace: istio-system
+  labels:
+    app: telemetry
+    chart: mixer
+    heritage: Tiller
+    release: istio
+    version: 1.1.0
+    istio: mixer
+    istio-mixer-type: telemetry
+spec:
+
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: telemetry
+      release: istio
+      istio: mixer
+      istio-mixer-type: telemetry
+---
+
+---
+# Source: istio/charts/pilot/templates/poddisruptionbudget.yaml
+
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: istio-pilot
+  namespace: istio-system
+  labels:
+    app: pilot
+    chart: pilot
+    heritage: Tiller
+    release: istio
+    istio: pilot
+spec:
+
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: pilot
+      release: istio
+      istio: pilot
+
+---
 # Source: istio/charts/galley/templates/configmap.yaml
 apiVersion: v1
 kind: ConfigMap
@@ -2943,126 +3063,6 @@ webhooks:
       matchLabels:
         istio-injection: enabled
 
-
----
-# Source: istio/charts/galley/templates/poddisruptionbudget.yaml
-
-apiVersion: policy/v1beta1
-kind: PodDisruptionBudget
-metadata:
-  name: istio-galley
-  namespace: istio-system
-  labels:
-    app: galley
-    chart: galley
-    heritage: Tiller
-    release: istio
-    istio: galley
-spec:
-
-  minAvailable: 1
-  selector:
-    matchLabels:
-      app: galley
-      release: istio
-      istio: galley
-
----
-# Source: istio/charts/gateways/templates/poddisruptionbudget.yaml
-
-apiVersion: policy/v1beta1
-kind: PodDisruptionBudget
-metadata:
-  name: istio-ingressgateway
-  namespace: istio-system
-  labels:
-    chart: gateways
-    heritage: Tiller
-    release: istio
-    app: istio-ingressgateway
-    istio: ingressgateway
-spec:
-
-  minAvailable: 1
-  selector:
-    matchLabels:
-      release: istio
-      app: istio-ingressgateway
-      istio: ingressgateway
----
-
----
-# Source: istio/charts/mixer/templates/poddisruptionbudget.yaml
-
-apiVersion: policy/v1beta1
-kind: PodDisruptionBudget
-metadata:
-  name: istio-policy
-  namespace: istio-system
-  labels:
-    app: policy
-    chart: mixer
-    heritage: Tiller
-    release: istio
-    version: 1.1.0
-    istio: mixer
-    istio-mixer-type: policy
-spec:
-
-  minAvailable: 1
-  selector:
-    matchLabels:
-      app: policy
-      release: istio
-      istio: mixer
-      istio-mixer-type: policy
----
-apiVersion: policy/v1beta1
-kind: PodDisruptionBudget
-metadata:
-  name: istio-telemetry
-  namespace: istio-system
-  labels:
-    app: telemetry
-    chart: mixer
-    heritage: Tiller
-    release: istio
-    version: 1.1.0
-    istio: mixer
-    istio-mixer-type: telemetry
-spec:
-
-  minAvailable: 1
-  selector:
-    matchLabels:
-      app: telemetry
-      release: istio
-      istio: mixer
-      istio-mixer-type: telemetry
----
-
----
-# Source: istio/charts/pilot/templates/poddisruptionbudget.yaml
-
-apiVersion: policy/v1beta1
-kind: PodDisruptionBudget
-metadata:
-  name: istio-pilot
-  namespace: istio-system
-  labels:
-    app: pilot
-    chart: pilot
-    heritage: Tiller
-    release: istio
-    istio: pilot
-spec:
-
-  minAvailable: 1
-  selector:
-    matchLabels:
-      app: pilot
-      release: istio
-      istio: pilot
 
 ---
 # Source: istio/charts/galley/templates/validatingwebhookconfiguration.yaml.tpl
