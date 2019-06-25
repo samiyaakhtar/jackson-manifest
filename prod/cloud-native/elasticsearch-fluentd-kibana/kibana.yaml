@@ -10,7 +10,7 @@ kind: ConfigMap
 metadata:
   labels:
     app: kibana
-    chart: kibana-3.0.0
+    chart: kibana-3.2.0
     heritage: Tiller
     release: kibana
   name: kibana
@@ -43,7 +43,7 @@ kind: ConfigMap
 metadata:
   labels:
     app: kibana
-    chart: kibana-3.0.0
+    chart: kibana-3.2.0
     heritage: Tiller
     release: kibana
   name: kibana-test
@@ -55,7 +55,7 @@ kind: Service
 metadata:
   labels:
     app: kibana
-    chart: kibana-3.0.0
+    chart: kibana-3.2.0
     heritage: Tiller
     release: kibana
   name: kibana
@@ -78,7 +78,7 @@ metadata:
     helm.sh/hook: test-success
   labels:
     app: kibana
-    chart: kibana-3.0.0
+    chart: kibana-3.2.0
     heritage: Tiller
     release: kibana
   name: kibana-test
@@ -124,7 +124,7 @@ kind: Deployment
 metadata:
   labels:
     app: kibana
-    chart: kibana-3.0.0
+    chart: kibana-3.2.0
     heritage: Tiller
     release: kibana
   name: kibana
@@ -135,7 +135,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: e3e12444cc97663c3a051aff9e1b3103360ec7d4a874b515e7625bdc898beeed
+        checksum/config: c53deea91af2c2707579460f4122bcacdad48df7b6e6c2c1bf6b3a5480720d87
       labels:
         app: kibana
         release: kibana
